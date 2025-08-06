@@ -1,0 +1,67 @@
+(/localstroge/)if player walk
+  do
+ do
+do
+   reroll ui mamAy
+   end
+end
+     play local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local workspace = game:GetService("Workspace")
+
+-- Configuration (Adjust these values)
+local rerollCost = 10 -- Currency cost to reroll
+local eggSpawnArea = workspace.EggSpawnArea -- Replace with your egg spawn area
+local eggModel = ReplicatedStorage.Egg -- Replace with your egg model
+
+-- Function to remove existing eggs
+local function clearEggs()
+    for _, egg in pairs(eggSpawnArea:GetChildren()) do
+        if egg:IsA("Model") and egg.Name == "Egg" then
+            egg:Destroy()
+        end
+    end
+end
+
+-- Function to spawn new eggs (customize as needed)
+local function spawnEggs(numEggs)
+    for i = 1, numEggs do
+        local newEgg = eggModel:Clone()
+        newEgg.Parent = eggSpawnArea
+        newEgg.Name = "Egg" --Ensure consistent naming
+        -- Add any egg positioning logic here
+        newEgg.Position = Vector3.new(math.random(-5,5), 1, math.random(-5,5)) + eggSpawnArea.Position --Example: random position within area. Adjust as needed.
+    end
+end
+
+
+-- Reroll function
+local function rerollEggs(player)
+    local leaderstats = player:FindFirstChild("leaderstats")
+    if leaderstats then
+        local currency = leaderstats:FindFirstChild("Currency") -- Replace "Currency" with your currency stat name
+        if currency and currency.Value >= rerollCost then
+            currency.Value -= rerollCost
+            clearEggs()
+            spawnEggs(3) -- Spawn 3 new eggs. Adjust as needed.
+            player:Chat("Eggs rerolled!")
+        else
+            player:Chat("Not enough currency to reroll!")
+        end
+    else
+        player:Chat("Error: Leaderstats not found.")
+    end
+end
+
+-- Event handler for reroll request
+Players.PlayerAdded:Connect(function(player)
+    player.Chatted:Connect(function(msg)
+        if string.lower(msg) == "!reroll" then
+            rerollEggs(player)
+        end
+    end)
+end)
+    (localstorage)reroll grow a garden
+      end
+  end
+      end
